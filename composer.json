@@ -6,12 +6,11 @@
     "authors": [
         {
             "name": "Steve McDougall",
-            "email": "juststevemcd@gmail.com"
+            "email": "juststevemcd@gmail.com",
+            "homepage": "https://www.juststeveking.uk",
+            "role": "Author"
         }
     ],
-    "require": {
-        "php": "^7.4"
-    },
     "autoload": {
         "psr-4": {
             "JustSteveKing\\Graph\\Connection\\": "src/"
@@ -22,6 +21,9 @@
             "JustSteveKing\\Tests\\Graph\\Connection\\": "tests/"
         }
     },
+    "require": {
+        "php": "^7.4"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.1",
         "symfony/var-dumper": "^5.0",
@@ -31,5 +33,11 @@
         "thecodingmachine/phpstan-safe-rule": "^1.0",
         "phploc/phploc": "^6.0",
         "phpmetrics/phpmetrics": "^2.6"
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit --coverage-html build/coverage-report -d memory_limit=512M --testdox",
+        "style": "./vendor/bin/phpcs src/",
+        "check": "./vendor/bin/phpcbf src/",
+        "analyse": "./vensor/bin/phpstan analyse"
     }
 }

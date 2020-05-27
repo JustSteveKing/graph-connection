@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace JustSteveKing\Tests\Graph\Connection;
 
-use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 use PHPUnit\Framework\TestCase;
 use JustSteveKing\Graph\Connection\ConnectionManager;
 use JustSteveKing\Graph\Connection\Adapters\AdapterInterface;
+use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 use JustSteveKing\Tests\Graph\Connection\Stubs\WorkingAdapter;
 
 class ConnectionManagerTest extends TestCase

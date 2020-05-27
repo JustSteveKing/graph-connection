@@ -14,4 +14,9 @@ class AnotherAdapter implements AdapterInterface
     {
         return static::$name;
     }
+
+    public function send(string $query)
+    {
+        return $query;
+    }
 }

@@ -119,4 +119,15 @@ class ConnectionManager
     {
         return $this->using;
     }
+
+    /**
+     * Pass the query through to the adapter and return
+     *
+     * @param string $query
+     * @return mixed
+     */
+    public function query(string $query)
+    {
+        return $this->using->send($query);
+    }
 }
