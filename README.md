@@ -13,7 +13,7 @@ The purpose of this package is to create a simple to use manager class where you
 
 ## Installation
 
-Using composer (when published):
+Using composer:
 
 ```bash
 $ composer require juststeveking/graph-connection
