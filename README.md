@@ -1,5 +1,12 @@
 # Graph Connection Manager
 
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+![run-tests](https://github.com/JustSteveKing/graph-connection/workflows/run-tests/badge.svg)
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
+
+
 **This package is still a work in progress, what I have tested works so far but should not be used in a production environment yet**
 
 The purpose of this package is to create a simple to use manager class where you can add graph database connection adapters, and forward calls through to the adapters to query against your graph databases.
@@ -131,3 +138,12 @@ $ ./vendor/bin/phpunit --testdox
 ## Security
 
 If you discover any security related issues, please email juststevemcd@gmail.com instead of using the issue tracker.
+
+[ico-version]: https://img.shields.io/packagist/v/juststeveking/graph-connection.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/juststeveking/graph-connection.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/JustSteveKing/graph-connection.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/juststeveking/graph-connection
+[link-downloads]: https://packagist.org/packages/juststeveking/graph-connection
+[link-author]: https://github.com/JustSteveKing
+[link-code-quality]: https://scrutinizer-ci.com/g/JustSteveKing/graph-connection
