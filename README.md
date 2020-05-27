@@ -107,6 +107,13 @@ $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter())
 $response = $manager->getAdapter('adapter-alias')->query('graph query');
 ```
 
+## Writing queries for neo4j
+
+I am currently in the process of publishing a Cypher query builder to use alongside this library, but you are also welcome to use any other library or method to write cypher queries yourself.
+
+[Cypher Query Builder package](https://github.com/JustSteveKing/cypher-query-builder)
+
+
 ## Tests
 
 There is a composer script available to run the tests:
