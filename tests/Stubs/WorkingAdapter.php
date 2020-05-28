@@ -8,6 +8,8 @@ use JustSteveKing\Graph\Connection\Adapters\AdapterInterface;
 
 class WorkingAdapter implements AdapterInterface
 {
+    protected array $queries;
+    
     private static string $name = 'working';
 
     public static function getName(): string
@@ -15,8 +17,15 @@ class WorkingAdapter implements AdapterInterface
         return static::$name;
     }
 
-    public function send(string $query)
+    public function send()
     {
-        return $query;
+        return [];
+    }
+
+    public function query(string $query) : self
+    {
+        array_push($this->queries, $query);
+
+        return $this;
     }
 }

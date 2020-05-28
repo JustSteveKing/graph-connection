@@ -29,9 +29,15 @@ The first step is to create an adapter that extends the `JustSteveKing\Graph\Con
 
 This of course must return a string, but this string is what is used to alias your adapter when using the `ConnectionManager` class.
 
-- `public function send(string $query);`
 
-This is where you would send your graph query as a string, through to your adapter - the return type is down to the adapter itself (this isn't a PSR).
+- `public function query(string $query) : self`
+
+This method is where you would build up your call stack of queries to send over as a transaction.
+
+
+- `public function send();`
+
+This is where you would send the query over to the database server.
 
 
 I am currently building out a `HttpAdapter` to use alongside neo4j and their v4 HTTP API, which will be released as a separate package.
@@ -83,7 +89,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->use('adapter-alias')->send('graph query');
+$response = $manager->use('adapter-alias')->query('graph query')->send();
 ```
 
 ## The using method to select an adapter to query against
@@ -97,7 +103,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->using('adapter-alias')->send('graph query');
+$response = $manager->using('adapter-alias')->query('graph query')->send();
 ```
 
 ## The getAdapter method to select an adapter to query against
@@ -111,7 +117,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->getAdapter('adapter-alias')->send('graph query');
+$response = $manager->getAdapter('adapter-alias')->query('graph query')->send();
 ```
 
 ## Writing queries for neo4j

@@ -129,6 +129,6 @@ class ConnectionManager
      */
     public function query(string $query)
     {
-        return $this->using->send($query);
+        return $this->using->query($query);
     }
 }
