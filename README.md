@@ -83,7 +83,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->use('adapter-alias')->query('graph query');
+$response = $manager->use('adapter-alias')->send('graph query');
 ```
 
 ## The using method to select an adapter to query against
@@ -97,7 +97,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->using('adapter-alias')->query('graph query');
+$response = $manager->using('adapter-alias')->send('graph query');
 ```
 
 ## The getAdapter method to select an adapter to query against
@@ -111,7 +111,7 @@ use JustSteveKing\Tests\Graph\Connection\Stubs\AnotherAdapter;
 
 $manager = ConnectionManager::create(new WorkingAdapter(), new AnotherAdapter());
 
-$response = $manager->getAdapter('adapter-alias')->query('graph query');
+$response = $manager->getAdapter('adapter-alias')->send('graph query');
 ```
 
 ## Writing queries for neo4j
