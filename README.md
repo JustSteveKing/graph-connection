@@ -40,6 +40,9 @@ This method is where you would build up your call stack of queries to send over 
 This is where you would send the query over to the database server.
 
 
+Please ensure you use your own method of storing queries in your adapter, as these cannot be enforced by an interface.
+
+
 I am currently building out a `HttpAdapter` to use alongside neo4j and their v4 HTTP API, which will be released as a separate package.
 
 
