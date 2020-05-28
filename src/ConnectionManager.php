@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace JustSteveKing\Graph\Connection;
 
+use JustSteveKing\ParameterBag\ParameterBag;
 use JustSteveKing\Graph\Connection\Adapters\AdapterInterface;
 
 class ConnectionManager
 {
     /**
-     * @var AdapterInterface[]
+     * @var ParameterBag
      */
-    protected array $adapters;
+    protected ParameterBag $adapters;
 
     /**
      * @var AdapterInterface
@@ -26,10 +27,10 @@ class ConnectionManager
      */
     private function __construct(AdapterInterface ...$adapters)
     {
-        $this->adapters = [];
+        $this->adapters = new ParameterBag();
 
         foreach ($adapters as $adapter) {
-            $this->adapters[$adapter::getName()] = $adapter;
+            $this->adapters->set($adapter::getName(), $adapter);
         }
     }
 
@@ -52,7 +53,7 @@ class ConnectionManager
      */
     public function addAdapter(AdapterInterface $adapter): self
     {
-        $this->adapters[$adapter::getName()] = $adapter;
+        $this->adapters->set($adapter::getName(), $adapter);
 
         return $this;
     }
@@ -64,7 +65,7 @@ class ConnectionManager
      */
     public function getAdapters(): array
     {
-        return $this->adapters;
+        return $this->adapters->all();
     }
 
     /**
@@ -75,11 +76,11 @@ class ConnectionManager
      */
     public function getAdapter(string $alias): AdapterInterface
     {
-        if (! array_key_exists($alias, $this->adapters)) {
+        if (! $this->adapters->has($alias)) {
             throw new \RuntimeException("No Adapter registered using the alias: $alias");
         }
 
-        return $this->adapters[$alias];
+        return $this->adapters->get($alias);
     }
 
     /**
@@ -90,11 +91,11 @@ class ConnectionManager
      */
     public function using(string $alias): AdapterInterface
     {
-        if (! array_key_exists($alias, $this->adapters)) {
+        if (! $this->adapters->has($alias)) {
             throw new \RuntimeException("No Adapter registered using the alias: $alias");
         }
 
-        $this->using = $this->adapters[$alias];
+        $this->using = $this->adapters->get($alias);
 
         return $this->using;
     }
